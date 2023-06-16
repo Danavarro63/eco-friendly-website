@@ -4,7 +4,6 @@ import {BsPlusLg} from 'react-icons/bs'
 
 import Image from 'next/image'
 import Products from "app/Product/[ProductId]/records.json";
-import ShoppingCart from 'public/Shopping.png'
 function Basket() {
 
     const [basketItemsIds,
