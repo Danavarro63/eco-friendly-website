@@ -1,4 +1,5 @@
 [
+
   {
     "id": 1,
     "title": "Reusable Bamboo Toothbrush",
@@ -172,7 +173,7 @@
     "price": 14.99
   },
   {
-    "id": 28,
+    "id": 28, 
     "title": "Reusable Beeswax Food Storage Wraps",
     "description": "Food storage wraps made from reusable beeswax-infused fabric, offering a sustainable alternative to plastic containers.",
     "price": 9.99

@@ -1,5 +1,5 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import Freeshipping from './freeshipping';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { BsBag } from 'react-icons/bs';
@@ -9,11 +9,11 @@ import products from "app/Product/[ProductId]/records.json";
 import Link from 'next/link';
 import Select from "react-select";
 import Basket from "./Basket.jsx";
-
+import Products from "app/Product/[ProductId]/records.json";
 import Logo from 'public/ecofriendly-transformed.png';
 import Image from 'next/image';
 
-function Navbar() {
+function Navbar({ basketItemsIds, setBasketItemsIds }) {
   const options = products.map((product) => ({
     value: product.title,
     label: product.title,
@@ -28,7 +28,6 @@ function Navbar() {
     setIsBasketOpen(!basketOpen);
   };
 
-  console.log(basketOpen);
   const togglehamburger = () => {
     setIsMenuOpen(!menuOpen);
   };
@@ -42,9 +41,6 @@ function Navbar() {
       );
       if (product) {
         window.location.href = `/Product/${product.id}`;
-      } else {
-        console.log(product);
-        console.log(searchQuery.value);
       }
     }
   };
@@ -55,50 +51,24 @@ function Navbar() {
     }
   };
 
+  function calculateTotal() {
+    let total = 0;
+    for (let i = 0; i < basketItemsIds.length; i++) {
+      total = total + Products[basketItemsIds[i]].price;
+      console.log(Products[basketItemsIds[i]].price);
+    }
+    return total.toFixed(2);
+  }
+
   return (
     <>
       <Freeshipping />
       <div className='h-24 items-center pl-12 justify-between pr-12 flex'>
-        <button onClick={togglehamburger} className="md:hidden cursor-pointer">
-          {menuOpen ? (
-            <div className=''>
-              <ul className='border-2 gap-4 w-48 left-0 absolute ml-4 pb-4 z-20 bg-white flex flex-col '>
-                <div>
-                  <RiCloseLine size={40} />
-                </div>
-                <li className=' hover:text-gray-700 hover:scale-110 '> <a href="#">All</a></li>
-                <li className=' hover:text-gray-700 hover:scale-110'> <a href="#">Baby</a></li>
-                <li className=' hover:text-gray-700 hover:scale-110'> <a href="#">Beauty</a></li>
-                <li className=' hover:text-gray-700 hover:scale-110'> <a href="#">Pet</a></li>
-                <li className=' hover:text-gray-700 hover:scale-110'> <a href="#"></a>Dairy</li>
-                <li className=' hover:text-gray-700 hover:scale-110'> <a href="#"></a>New Arrivals</li>
-                <li className=' hover:text-gray-700 hover:scale-110'> <a href="#"></a>Skincare</li>
-                <li className=' hover:text-gray-700 hover:scale-110'> <a href="#"></a>Kitchen</li>
-                <li className=' hover:text-gray-700 hover:scale-110'> <a href="#"></a>Bathroom</li>
-                <li className=' hover:text-gray-700 hover:scale-110'> <a href="#"></a>Gifts</li>
-              </ul>
-            </div>
-
-          ) : (
-              <RxHamburgerMenu size={40} />
-
-            )}
-        </button>
-
-        <div className='flex flex-row'>
-          <Link href="/">
-            <Image className='cursor-pointer' src={Logo} alt={"logo"} width={100} />
+      <Link href="/">
+      <div className="flex items-center"> <div className="md:hidden"> <Image className='cursor-pointer' src={Logo} alt={"logo"} width={100} height={24} /> </div> <div className="hidden md:block"> <Image className='cursor-pointer' src={Logo} alt={"logo"} width={100} height={24} /> </div> </div>
           </Link>
-          <div className='md:flex md:flex-row md:gap-12 items-center hidden'>
-            <select className='h-8 bg-gray-100 rounded-2xl text-sm p-1 ml-4 border border-black/10'>
-              <option value="All">All</option>
-              <option value="baby">Baby</option>
-              <option value="beauty">beauty</option>
-              <option value="pet">pet</option>
-              <option value="dairy">dairy</option>
-            </select>
-            <div className='flex flex-row items-center bg-gray-100 rounded-2xl h-10 px-2 justify-between'>
-              <BiSearchAlt2 />
+      <div className='md:hidden flex flex-row items-center bg-gray-100 rounded-2xl h-10 px-2 justify-between w-full md:w-96'>
+              <BiSearchAlt2 className='text-gray-400' />
               <Select
                 options={options}
                 value={searchQuery}
@@ -107,7 +77,7 @@ function Navbar() {
                 placeholder="Search"
                 isClearable
                 isSearchable
-                className="w-96 rounded-lg focus:outline-none outline-none"
+                className="w-full rounded-lg focus:outline-none outline-none text-sm"
                 classNamePrefix="react-select"
                 styles={{
                   dropdownIndicator: (provided) => ({
@@ -116,29 +86,56 @@ function Navbar() {
                     boxShadow: 'none',
                     zIndex: 20,
                     outline: 'none',
-
                   }),
                 }}
               />
-              <button onClick={handleSearch}>Search</button>
+              <button onClick={handleSearch} className='text-sm'>Search</button>
+            </div>
+
+        <div className='flex flex-row items-center'>
+          <div className='md:flex md:flex-row md:gap-12 items-center hidden'>
+            <div className='md:w-48'>
+            </div>
+            <div className='hidden md:flex items-center bg-gray-100 rounded-2xl h-10 px-2 justify-between w-full md:w-96'>
+              <BiSearchAlt2 className='text-gray-400' />
+              <Select
+                options={options}
+                value={searchQuery}
+                onChange={(selectedOption) => setSearchQuery(selectedOption)}
+                onKeyDown={handleKeyDown}
+                placeholder="Search"
+                isClearable
+                isSearchable
+                className="w-full rounded-lg focus:outline-none outline-none text-sm"
+                classNamePrefix="react-select"
+                styles={{
+                  dropdownIndicator: (provided) => ({
+                    ...provided,
+                    display: 'none',
+                    boxShadow: 'none',
+                    zIndex: 20,
+                    outline: 'none',
+                  }),
+                }}
+              />
+              <button onClick={handleSearch} className='text-sm'>Search</button>
             </div>
           </div>
         </div>
         <div className='hidden md:flex md:flex-row md:gap-4 items-center'>
-          <p className='cursor-pointer hover:text-black/75'>Login</p>
           <div className='flex flex-row gap-2 items-center cursor-pointer hover:text-black/75'>
-            <button onClick={toggleBasket}>Basket/£0.00</button>
+            <button onClick={toggleBasket}>Basket/£{calculateTotal()}</button>
             <BsBag onClick={toggleBasket} />
           </div>
-          <div className=' bg-blue-400 rounded-3xl h-8 text-white px-2 flex justify-center items-center hover:bg-blue-500 cursor-pointer'>
+          <div className='bg-blue-400 rounded-3xl h-8 text-white px-2 flex justify-center items-center hover:bg-blue-500 cursor-pointer text-sm'>
             Checkout
           </div>
         </div>
-        <BsBag size={40} className="md:hidden cursor-pointer" onClick={togglehamburger} />
+        <BsBag size={40} className="md:hidden cursor-pointer" onClick={toggleBasket} />
       </div>
 
       {basketOpen &&
-        <Basket />}
+        <Basket  basketItemsIds={basketItemsIds} setBasketItemsIds={setBasketItemsIds} />}
     </>
   );
 }

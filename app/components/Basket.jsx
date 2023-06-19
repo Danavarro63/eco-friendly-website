@@ -4,25 +4,8 @@ import {BsPlusLg} from 'react-icons/bs'
 
 import Image from 'next/image'
 import Products from "app/Product/[ProductId]/records.json";
-function Basket() {
+function Basket({basketItemsIds,setBasketItemsIds}) {
 
-    const [basketItemsIds,
-        setBasketItemsIds] = useState([
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    ])
     const [uniqueBasketItemsIds,
         setUniqueBasketItemsIds] = useState([...new Set(basketItemsIds)])
 
@@ -59,7 +42,10 @@ function Basket() {
             updatedBasketItemsIds.splice(indexToRemove, 1);
             setBasketItemsIds(updatedBasketItemsIds);
         }
-    }
+    
+        
+}
+
 
     return (
         <div className='z-50 w-fit border-2 p-4 h-96 overflow-scroll ml-auto mr-12'>
@@ -67,6 +53,7 @@ function Basket() {
             {uniqueBasketItemsIds
                 .map(function (itemId) {
                     return (<BasketItem
+                    key={itemId}
                         id={itemId}
                         removeOneFromBasket={removeOneFromBasket}
                         basketItemsIds={basketItemsIds}

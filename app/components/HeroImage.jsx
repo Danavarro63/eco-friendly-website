@@ -1,22 +1,42 @@
-import React from 'react';
+"use client"
+import React,{useState,useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Products from "app/Product/[ProductId]/records.json";
 
-function HeroImage() {
+function HeroImage({basketItemsIds,setBasketItemsIds}) {
+  
+  
+  const [uniqueBasketItemsIds,setUniqueBasketItemsIds] = useState([...new Set(basketItemsIds)])
+    useEffect(() => {
+      setUniqueBasketItemsIds([...new Set(basketItemsIds)]);
+    }, [basketItemsIds]);
+    
+  
+    function addToBasket(id) {
+      const updatedBasketItemsIds = [
+          ...basketItemsIds,
+          id
+      ];
+      setBasketItemsIds(updatedBasketItemsIds);
+      const newUniqueItems = [...new Set(updatedBasketItemsIds)];
+      setUniqueBasketItemsIds(newUniqueItems);
+  }
   return (
     <div className='max-w-7xl mx-auto'>
-      <ProductImageLarge id={31} src={Products[30].image} title={Products[0].title} />
+      <ProductImageLarge addToBasket={addToBasket} id={31} src={Products[30].image} title={Products[0].title} />
       <div className='grid grid-cols-3 gap-4 p-4'>
-        <ProductImageSmall id={32} src={Products[31].image} />
-        <ProductImageSmall id={33} src={Products[32].image} />
-        <ProductImageSmall id={34} src={Products[33].image} />
+        <ProductImageSmall addToBasket={addToBasket} id={32} src={Products[31].image} title={Products[31].title} />
+        <ProductImageSmall addToBasket={addToBasket} id={33} src={Products[32].image} title={Products[32].title} />
+        <ProductImageSmall addToBasket={addToBasket} id={34} src={Products[33].image} title={Products[33].title} />
       </div>
     </div>
   );
+  
 }
 
-function ProductImageLarge({ src, title, id }) {
+
+function ProductImageLarge({ src, title, id,addToBasket }) {
   return (
     <div className='relative'>
       <Image className='px-4 block' width={1500} height={1500} src={src} alt={"wooden spoon"} />
@@ -24,7 +44,7 @@ function ProductImageLarge({ src, title, id }) {
         <h1 className='text-gray-600 left-0 sm:text-md md:text-xl lg:text-2xl xl:text-5xl font-light pt-10'>{title}</h1>
         <div className='gap-4 left-10 pb-10'>
           <div className="flex gap-4">
-            <Button id={id} label={"Add To Basket"} /> <Button id={id} label="See More" />
+            <AddButton id={id-1} label="Add to Basket" addToBasket={addToBasket} /> <Button id={id} label="See More" />
           </div>
         </div>
       </div>
@@ -41,8 +61,17 @@ function Button({ label, id }) {
     </Link>
   );
 }
+function AddButton({ label, id,addToBasket }) {
+  return (
+    <button
+      className="bg-gray-400 text-white md:py-6 md:px-8 py-2 px-4 text-xs md:text-xl rounded-lg hover:bg-gray-700 transition ease-in-out duration-500"
+      onClick={() => addToBasket(id)}>
+      {label}
+    </button>
+  );
+}
 
-function ProductImageSmall({ src, title, id }) {
+function ProductImageSmall({ src, title, id,addToBasket}) {
   return (
     <div className="relative">
       <Image
@@ -61,7 +90,7 @@ function ProductImageSmall({ src, title, id }) {
         <h1 className='z-0 text-white left-0 sm:text-md md:text-xl lg:text-2xl font-light pt-10'>{title}</h1>
         <div className='gap-4 left-10 pb-20'>
           <div className="flex gap-4">
-            <ButtonSmall id={id} width={1500} height={1500} label="Add to 🛒" /> <ButtonSmall label="See More" id={id}/>
+            <AddButtonSmall addToBasket={addToBasket} id={id-1} width={1500} height={1500} label="Add to 🛒" /> <ButtonSmall label="See More" id={id}/>
           </div>
         </div>
       </div>
@@ -76,6 +105,16 @@ function ButtonSmall({ url, label, id }) {
       href={`Product/${id}`}>
       {label}
     </Link>
+  );
+}
+
+function AddButtonSmall({ url, label, id,addToBasket }) {
+  return (
+    <button
+      className="bg-gray-400 text-white md:py-6 md:px-8 py-2 px-4 text-xs md:text-xl rounded-lg hover:bg-gray-700 transition ease-in-out duration-500"
+      onClick={()=> addToBasket(id)}>
+      {label}
+    </button>
   );
 }
 
