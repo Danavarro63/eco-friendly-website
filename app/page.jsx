@@ -6,9 +6,19 @@ import { useState,useEffect } from 'react';
 
 export default function Home() {
 
-  const [basketItemsIds,setBasketItemsIds] = useState(() => JSON.parse(localStorage.getItem('basketItems')) || [1,2,3,4,5])
+  
+  const [basketItemsIds, setBasketItemsIds] = useState(() => {
+    if (typeof localStorage !== 'undefined') {
+      return JSON.parse(localStorage.getItem('basketItems'));
+    } else {
+      return [];
+    }
+  });
+  
   useEffect(() => {
-    localStorage.setItem('basketItems', JSON.stringify(basketItemsIds));
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('basketItems', JSON.stringify(basketItemsIds));
+    }
   }, [basketItemsIds]);
 
   return (

@@ -80,7 +80,12 @@ const BasketItem = ({id, basketItemsIds, removeFromBasket, addToBasket, removeOn
                 <div className="flex justify-between">
                     <h1>{Products[id].title}</h1>
                 </div>
-                <p className="text-gray-700">quantity:
+                <p className="text-gray-700">quantity: {basketItemsIds
+                      .reduce((accumulator, currentItem) => {
+                          if (currentItem === id) {
+                              return accumulator + 1;}
+          return accumulator;
+        }, 0)}
                 </p>
                 <p className="text-gray-500">{`£${Products[id]
                         .price} x ${basketItemsIds

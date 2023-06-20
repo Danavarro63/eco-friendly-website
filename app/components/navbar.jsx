@@ -53,6 +53,9 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
 
   function calculateTotal() {
     let total = 0;
+    if(!basketItemsIds){
+      return;
+    }
     for (let i = 0; i < basketItemsIds.length; i++) {
       total = total + Products[basketItemsIds[i]].price;
       console.log(Products[basketItemsIds[i]].price);
@@ -127,9 +130,9 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
             <button onClick={toggleBasket}>Basket/£{calculateTotal()}</button>
             <BsBag onClick={toggleBasket} />
           </div>
-          <div className='bg-blue-400 rounded-3xl h-8 text-white px-2 flex justify-center items-center hover:bg-blue-500 cursor-pointer text-sm'>
+          <Link href={"/Checkout"} className='bg-blue-400 rounded-3xl h-8 text-white px-2 flex justify-center items-center hover:bg-blue-500 cursor-pointer text-sm'>
             Checkout
-          </div>
+          </Link>
         </div>
         <BsBag size={40} className="md:hidden cursor-pointer" onClick={toggleBasket} />
       </div>
