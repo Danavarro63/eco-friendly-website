@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {AiOutlineCloseCircle, AiOutlineMinus} from "react-icons/ai"
 import {BsPlusLg} from 'react-icons/bs'
-
+import Link from 'next/link'
 import Image from 'next/image'
 import Products from "app/Product/[ProductId]/records.json";
 function Basket({basketItemsIds,setBasketItemsIds}) {
@@ -62,10 +62,10 @@ function Basket({basketItemsIds,setBasketItemsIds}) {
                         addToBasket={addToBasket}/>);
                 })}
 
-            <div
-                className=' bg-blue-400 rounded-3xl h-8 text-white px-2 flex justify-center items-center hover:bg-blue-500 cursor-pointer'>
+            <Link
+                className=' bg-blue-400 rounded-3xl h-8 text-white px-2 flex justify-center items-center hover:bg-blue-500 cursor-pointer' href={"/Checkout"}>
                 Checkout
-            </div>
+            </Link>
         </div>
     )
 }
