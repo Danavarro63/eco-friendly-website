@@ -66,15 +66,14 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
   return (
     <>
       <Freeshipping />
-      <div className='h-24 items-center pl-12 justify-between pr-12 flex'>
+      <div className='h-24 items-center justify-between flex'>
       <div> 
         <Link href="/">
           <Image className='cursor-pointer' src={Logo} alt={"logo"} width={100} height={100} />
         </Link>
       </div>
       <div>
-      <div className='flex flex-row items-center bg-gray-100 rounded-2xl h-10 px-2 justify-between lg:w-96 md:w-72 sm:w-60 xs:w-48 w-30 '>
-              <BiSearchAlt2 className='text-gray-400' />
+      <div className='flex flex-row items-center bg-gray-100 rounded-2xl h-10 px-2 justify-between lg:w-96 md:w-72 sm:w-60 xs:w-48 w-40'>
               <Select
                 options={options}
                 value={searchQuery}
@@ -92,6 +91,7 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
                     boxShadow: 'none',
                     zIndex: 20,
                     outline: 'none',
+
                   }),
                 }}
               />
