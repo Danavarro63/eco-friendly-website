@@ -87,7 +87,7 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
               placeholder="Search"
               isClearable
               isSearchable
-              className="w-full rounded-lg focus:outline-none outline-none text-sm resize-none pointer-events-none"
+              className="w-full rounded-lg focus:outline-none outline-none text-sm resize-none cursor-pointer "
               classNamePrefix="react-select"
               instanceId={useId()}
               styles={{

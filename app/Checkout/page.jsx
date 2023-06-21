@@ -18,6 +18,7 @@ function checkout() {
     }
   }, []);
 
+
   
 
   useEffect(() => {
@@ -68,11 +69,13 @@ function checkout() {
 
   return (
 
-    <div>
+    <div >
       <Navbar basketItemsIds={basketItemsIds} setBasketItemsIds={setBasketItemsIds} />
       <ExtraDropdowns />
+      <div >
+
       {basketItemsIds && basketItemsIds.length > 0 && <div className='md:p-14 grid md:grid-cols-2'> 
-         <div className='md:h-2/4 h-3/4  overflow-y-scroll'>
+         <div className='md:h-2/4 h-full  overflow-y-scroll'>
         {uniqueBasketItemsIds
                 .map(function (itemId) {
                   return (
@@ -107,14 +110,16 @@ function checkout() {
           </div>
       }
       {
-        basketItemsIds <1 && 
+        basketItemsIds.length == 0  && 
         <div className='flex flex-col items-center justify-center'>
           <h1 className='pt-24 pb-12 text-4xl'>Empty Basket</h1>
           <p className='py-6 text-2xl'>There is nothing in your basket</p>
           <p className='text-2xl'>Please add things to your basket to checkout</p>
+          {console.log(basketItemsIds)}
         </div>
       }
     </div>
+  </div>
   )
 
   function calculateTotal() {

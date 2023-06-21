@@ -24,7 +24,7 @@ function HeroImage({basketItemsIds,setBasketItemsIds}) {
   }
   return (
     <div className='max-w-7xl mx-auto'>
-      <ProductImageLarge addToBasket={addToBasket} id={31} src={Products[30].image} title={Products[0].title} />
+      <ProductImageLarge addToBasket={addToBasket} id={31} src={Products[30].image} title={Products[30].title} />
       <div className='grid grid-cols-3 gap-4 p-4'>
         <ProductImageSmall addToBasket={addToBasket} id={32} src={Products[31].image} title={Products[31].title} />
         <ProductImageSmall addToBasket={addToBasket} id={33} src={Products[32].image} title={Products[32].title} />
