@@ -26,8 +26,8 @@ function checkout() {
     <div>
       <Navbar basketItemsIds={basketItemsIds} setBasketItemsIds={setBasketItemsIds} />
       <ExtraDropdowns />
-      {basketItemsIds.length > 0 && <div className='p-14 grid grid-cols-2'> 
-         <div className='h-2/4 overflow-y-scroll'>
+      {basketItemsIds.length > 0 && <div className='md:p-14 grid md:grid-cols-2'> 
+         <div className='md:h-2/4 h-3/4  overflow-y-scroll'>
         {uniqueBasketItemsIds
                 .map(function (itemId) {
                   return (
@@ -52,7 +52,7 @@ function checkout() {
             </div>
 
 
-            <p className='bg-blue-400 rounded-3xl my-24 h-12 text-white px-2 flex justify-center text-2xl items-center hover:bg-blue-500 cursor-pointer'>
+            <p className='bg-blue-400 rounded-3xl my-24 h-12 text-white px-2 flex justify-center md:text-xl lg:text-2xl sm:text-lg items-center hover:bg-blue-500 cursor-pointer'>
               Proceed To checkout
           </p>
 

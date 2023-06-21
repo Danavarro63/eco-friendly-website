@@ -67,10 +67,13 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
     <>
       <Freeshipping />
       <div className='h-24 items-center pl-12 justify-between pr-12 flex'>
-      <Link href="/">
-      <div className="flex items-center"> <div className="md:hidden"> <Image className='cursor-pointer' src={Logo} alt={"logo"} width={100} height={24} /> </div> <div className="hidden md:block"> <Image className='cursor-pointer' src={Logo} alt={"logo"} width={100} height={24} /> </div> </div>
-          </Link>
-      <div className='md:hidden flex flex-row items-center bg-gray-100 rounded-2xl h-10 px-2 justify-between w-full md:w-96'>
+      <div> 
+        <Link href="/">
+          <Image className='cursor-pointer' src={Logo} alt={"logo"} width={100} height={100} />
+        </Link>
+      </div>
+      <div>
+      <div className='flex flex-row items-center bg-gray-100 rounded-2xl h-10 px-2 justify-between lg:w-96 md:w-72 sm:w-60 xs:w-48 w-30 '>
               <BiSearchAlt2 className='text-gray-400' />
               <Select
                 options={options}
@@ -93,39 +96,9 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
                 }}
               />
               <button onClick={handleSearch} className='text-sm'>Search</button>
-            </div>
-
-        <div className='flex flex-row items-center'>
-          <div className='md:flex md:flex-row md:gap-12 items-center hidden'>
-            <div className='md:w-48'>
-            </div>
-            <div className='hidden md:flex items-center bg-gray-100 rounded-2xl h-10 px-2 justify-between w-full md:w-96'>
-              <BiSearchAlt2 className='text-gray-400' />
-              <Select
-                options={options}
-                value={searchQuery}
-                onChange={(selectedOption) => setSearchQuery(selectedOption)}
-                onKeyDown={handleKeyDown}
-                placeholder="Search"
-                isClearable
-                isSearchable
-                className="w-full rounded-lg focus:outline-none outline-none text-sm"
-                classNamePrefix="react-select"
-                styles={{
-                  dropdownIndicator: (provided) => ({
-                    ...provided,
-                    display: 'none',
-                    boxShadow: 'none',
-                    zIndex: 20,
-                    outline: 'none',
-                  }),
-                }}
-              />
-              <button onClick={handleSearch} className='text-sm'>Search</button>
-            </div>
-          </div>
         </div>
-        <div className='hidden md:flex md:flex-row md:gap-4 items-center'>
+      </div>
+      <div className='hidden md:flex md:flex-row md:gap-4 items-center'>
           <div className='flex flex-row gap-2 items-center cursor-pointer hover:text-black/75'>
             <button onClick={toggleBasket}>Basket/£{calculateTotal()}</button>
             <BsBag onClick={toggleBasket} />

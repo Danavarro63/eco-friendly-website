@@ -48,7 +48,7 @@ function Basket({basketItemsIds,setBasketItemsIds}) {
 
 
     return (
-        <div className='z-50 w-fit border-2 p-4 h-96 overflow-scroll ml-auto mr-12'>
+        <div className='z-50 w-full max-w-4xl border-2 p-4 h-96 overflow-scroll ml-auto mr-12'>
             <h1 className='text-3xl mx-auto w-full'>Basket</h1>
             {uniqueBasketItemsIds
                 .map(function (itemId) {
