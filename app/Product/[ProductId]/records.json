@@ -74,121 +74,141 @@
     "id": 11,
     "title": "Reusable Storage Bags",
     "description": "A set of reusable food storage bags made from eco-friendly silicone.",
-    "price": 8.49
+    "price": 8.49,
+    "image":"https://m.media-amazon.com/images/I/71AgYsTVDhS._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 12,
     "title": "Dish Towels",
     "description": "Dish towels made from bamboo fiber, providing an eco-friendly alternative to traditional cotton towels.",
-    "price": 6.99
+    "price": 6.99,
+    "image":"https://m.media-amazon.com/images/I/917AnPsqfNL.jpg"
   },
   {
     "id": 13,
     "title": "Outdoor Lights",
     "description": "Outdoor lights powered by solar energy, reducing electricity consumption.",
-    "price": 24.99
+    "price": 24.99,
+    "image":"https://m.media-amazon.com/images/I/81LQFs8AbzL.jpg"
   },
   {
     "id": 14,
     "title": "Bed Sheets",
     "description": "Bed sheets made from organic bamboo fabric, offering a sustainable and comfortable bedding option.",
-    "price": 39.99
+    "price": 39.99,
+    "image":"https://m.media-amazon.com/images/I/61Ilrs3zaLL._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 15,
     "title": "PET Backpack",
     "description": "A backpack made from recycled PET bottles, perfect for eco-conscious travelers.",
-    "price": 29.99
+    "price": 29.99,
+    "image":"https://m.media-amazon.com/images/I/71IZ38E4I8S._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 16,
     "title": "Trash Bags",
     "description": "Trash bags made from compostable materials, reducing plastic waste in landfills.",
-    "price": 11.49
+    "price": 11.49,
+    "image":"https://m.media-amazon.com/images/I/81DNdGl6P-L._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 17,
     "title": "Soap Dish",
     "description": "A soap dish made from natural bamboo, providing a sustainable and stylish option for storing soap.",
-    "price": 5.99
+    "price": 5.99,
+    "image":"https://m.media-amazon.com/images/I/619QQhqN8gL._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 18,
     "title": "Cotton Bath Towels",
     "description": "Bath towels made from organic cotton, offering a soft and eco-friendly drying experience.",
-    "price": 17.99
+    "price": 17.99,
+    "image":"https://m.media-amazon.com/images/I/A184-cej0fL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 19,
     "title": "Recycled Glass Pitcher",
     "description": "A water pitcher made from recycled glass, combining functionality with sustainability.",
-    "price": 21.99
+    "price": 21.99,
+    "image":"https://m.media-amazon.com/images/I/716sj-ObAYL._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 20,
     "title": "Bamboo Toothbrush Holder",
     "description": "A toothbrush holder made from biodegradable bamboo, providing an eco-friendly storage solution.",
-    "price": 7.49
+    "price": 7.49,
+    "image":"https://m.media-amazon.com/images/I/51JdlmCfAqL._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 21,
     "title": "Natural Soy Wax Candles",
     "description": "Candles made from natural soy wax, offering a clean and sustainable option for ambiance and relaxation.",
-    "price": 9.99
+    "price": 9.99,
+    "image":"https://m.media-amazon.com/images/I/71JnUVMAovL._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 22,
     "title": "Reusable Silicone Baking Mats",
     "description": "Baking mats made from reusable silicone, eliminating the need for disposable parchment paper.",
-    "price": 12.49
+    "price": 12.49,
+    "image":"https://images-eu.ssl-images-amazon.com/images/I/81ab1Qo5kHL._AC_UL600_SR600,600_.jpg"
   },
   {
     "id": 23,
     "title": "Organic Cotton Baby Onesies",
     "description": "Baby onesies made from organic cotton, providing a soft and safe option for infants.",
-    "price": 15.99
+    "price": 15.99,
+    "image":"https://m.media-amazon.com/images/I/61uettSNSJL._AC_UY1100_.jpg"
   },
   {
     "id": 24,
     "title": "Recycled Plastic Rugs",
     "description": "Rugs made from recycled plastic materials, offering a sustainable and durable flooring option.",
-    "price": 34.99
+    "price": 34.99,
+    "image":"https://m.media-amazon.com/images/I/81s9Iwj8eML._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 25,
     "title": "Biodegradable Dog Poop Bags",
     "description": "Dog poop bags made from biodegradable materials, reducing plastic pollution in parks and streets.",
-    "price": 6.49
+    "price": 6.49,
+    "image":"https://ecogreenliving.co.uk/wp-content/uploads/2021/07/dog-bag-05.jpg"
   },
   {
     "id": 26,
     "title": "Charcoal Air Purifier ",
     "description": "Air purifier bags filled with bamboo charcoal, naturally absorbing odors and pollutants in the air.",
-    "price": 11.99
+    "price": 11.99,
+    "image":"https://m.media-amazon.com/images/I/A1KpxZs7NuL.jpg"
   },
   {
     "id": 27,
     "title": "Recycled Aluminum Water Bottle",
     "description": "A water bottle made from recycled aluminum, providing a lightweight and eco-friendly hydration option.",
-    "price": 14.99
+    "price": 14.99,
+    "image":"https://m.media-amazon.com/images/I/61vO28J7FrL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 28, 
-    "title": "Reusable Beeswax Food Storage Wraps",
-    "description": "Food storage wraps made from reusable beeswax-infused fabric, offering a sustainable alternative to plastic containers.",
-    "price": 9.99
+    "title": "Eco Friendly Toothpaste",
+    "description": "Charcoal toothpaste that comes in a glass jar, to minimise waste.",
+    "price": 9.99,
+    "image":"https://m.media-amazon.com/images/I/713NksoZvWL._AC_UF894,1000_QL80_.jpg"
   },
   {
     "id": 29,
     "title": "Natural Bamboo Bath Mat",
     "description": "A bath mat made from natural bamboo, providing a sustainable and water-resistant flooring option.",
-    "price": 13.99
+    "price": 13.99,
+    "image":"https://m.media-amazon.com/images/I/81n-CUxkTBL.jpg"
   },
   {
     "id": 30,
     "title": "Biodegradable Bamboo Cotton Swabs",
     "description": "Cotton swabs made from biodegradable bamboo and organic cotton, reducing plastic waste.",
-    "price": 4.99
+    "price": 4.99,
+    "image":"https://m.media-amazon.com/images/I/81GyS971jQL._AC_UF1000,1000_QL80_.jpg"
   },
   {
     "id": 31,

@@ -1,7 +1,7 @@
 import './globals.css'
-import { Roboto_Flex } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 
-const roboto = Roboto_Flex({ subsets: ['latin'] })
+const roboto = Roboto({ subsets: ['latin'],weight:["400"] })
 
 export const metadata = {
   title: 'Eco-Friendly Website',

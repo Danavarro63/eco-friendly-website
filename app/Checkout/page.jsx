@@ -18,15 +18,60 @@ function checkout() {
     }
   }, []);
 
+  
+
   useEffect(() => {
     localStorage.setItem('basketItems', JSON.stringify(basketItemsIds));
   }, [basketItemsIds]);
+
+  const BasketItem = ({ id }) => {
+    const quantity = basketItemsIds.reduce((accumulator, currentItem) => {
+      if (currentItem === id) {
+        return accumulator + 1;
+      }
+      return accumulator;
+    }, 0);
+  
+    const price = (Products[id].price * quantity).toFixed(2);
+  
+    return (
+      <div className="flex py-8 w-full border justify-around">
+        <div className="p-2 flex flex-row items-center">
+          <div className="w-24 h-24 overflow-hidden mr-4 flex-shrink-0">
+            <img
+              src={Products[id].image}
+              alt="ProductImage"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-xl w-36">{Products[id].title}</h1>
+            <p className="text-gray-700">
+              Quantity: {quantity}
+            </p>
+            <p className="text-gray-500">
+              Price = £{price}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center">
+          <button>
+            <AiOutlineCloseCircle
+              size={40}
+              onClick={() => removeFromBasket(id)}
+            />
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
 
     <div>
       <Navbar basketItemsIds={basketItemsIds} setBasketItemsIds={setBasketItemsIds} />
       <ExtraDropdowns />
-      {basketItemsIds.length > 0 && <div className='md:p-14 grid md:grid-cols-2'> 
+      {basketItemsIds && basketItemsIds.length > 0 && <div className='md:p-14 grid md:grid-cols-2'> 
          <div className='md:h-2/4 h-3/4  overflow-y-scroll'>
         {uniqueBasketItemsIds
                 .map(function (itemId) {
@@ -41,6 +86,7 @@ function checkout() {
             <div className='flex justify-between'>
               <p>SubTotals :</p>
               <p>{calculateTotal()}</p>
+              {console.log(calculateTotal())}
             </div>
             <div className='flex justify-between'>
               <p>Shipping: Royal Mail 48h Tracked :</p>
@@ -61,7 +107,7 @@ function checkout() {
           </div>
       }
       {
-        basketItemsIds == 0 && 
+        basketItemsIds <1 && 
         <div className='flex flex-col items-center justify-center'>
           <h1 className='pt-24 pb-12 text-4xl'>Empty Basket</h1>
           <p className='py-6 text-2xl'>There is nothing in your basket</p>
@@ -73,63 +119,23 @@ function checkout() {
 
   function calculateTotal() {
     let total = 0;
-    if(!basketItemsIds){
-      return;
+    if (!basketItemsIds) {
+      return '0.00';
     }
     for (let i = 0; i < basketItemsIds.length; i++) {
-      total = total + Products[basketItemsIds[i]].price;
+      total = total + Number(Products[basketItemsIds[i]].price);
     }
     return total.toFixed(2);
   }
   
-function removeFromBasket(id) {
-  const updatedBasketItemsIds = basketItemsIds.filter((x) => x !== id);
-  setBasketItemsIds(updatedBasketItemsIds);
-  const newUniqueItems = [...new Set(updatedBasketItemsIds)];
-  setUniqueBasketItemsIds(newUniqueItems);
-}
-}
+  function removeFromBasket(id) {
+    const updatedBasketItemsIds = basketItemsIds.filter((x) => x !== id);
+    setBasketItemsIds(updatedBasketItemsIds);
+    const newUniqueItems = [...new Set(updatedBasketItemsIds)];
+    setUniqueBasketItemsIds(newUniqueItems);
+  }
+  
 
-
-const BasketItem = ({ id, basketItemsIds, removeFromBasket }) => {
-  return (
-    <div className="flex py-8 w-full border justify-around">
-      <div className="p-2 flex flex-row items-center">
-        <div className="w-24 h-24 overflow-hidden mr-4 flex-shrink-0">
-          <img src={Products[id].image} alt="ProductImage" className="w-full h-full object-cover" />
-        </div>
-        <div className="flex flex-col">
-          <h1 className="text-xl w-36">{Products[id].title}</h1>
-          <p className="text-gray-700">
-            Quantity:
-            {basketItemsIds.reduce((accumulator, currentItem) => {
-              if (currentItem === id) {
-                return accumulator + 1;
-              }
-              return accumulator;
-            }, 0)}
-          </p>
-          <p className="text-gray-500">
-            Price = £
-            {(
-              Products[id].price *
-              basketItemsIds.reduce((accumulator, currentItem) => {
-                if (currentItem === id) {
-                  return accumulator + 1;
-                }
-                return accumulator;
-              }, 0)
-            ).toFixed(2)}
-          </p>
-        </div>
-      </div>
-      <div className="flex items-center">
-        <button>
-          <AiOutlineCloseCircle size={40} onClick={() => removeFromBasket(id)} />
-        </button>
-      </div>
-    </div>
-  );
 };
 
 

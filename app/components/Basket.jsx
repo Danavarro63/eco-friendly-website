@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {AiOutlineCloseCircle, AiOutlineMinus} from "react-icons/ai"
 import {BsPlusLg} from 'react-icons/bs'
 import Link from 'next/link'
@@ -6,8 +6,16 @@ import Image from 'next/image'
 import Products from "app/Product/[ProductId]/records.json";
 function Basket({basketItemsIds,setBasketItemsIds}) {
 
-    const [uniqueBasketItemsIds,
-        setUniqueBasketItemsIds] = useState([...new Set(basketItemsIds)])
+    const [uniqueBasketItemsIds, setUniqueBasketItemsIds] = useState([]);
+  
+    useEffect(() => {
+      const storedBasketItems = JSON.parse(localStorage.getItem('basketItems'));
+      if (storedBasketItems) {
+        setBasketItemsIds(storedBasketItems);
+        setUniqueBasketItemsIds([...new Set(storedBasketItems)]);
+      }
+    }, []);
+  
 
     function removeFromBasket(id) {
         const updatedBasketItemsIds = basketItemsIds.filter((x) => x !== id);

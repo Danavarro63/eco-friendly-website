@@ -23,7 +23,6 @@ function page({ params }) {
     const newUniqueItems = [...new Set(updatedBasketItemsIds)];
     setUniqueBasketItemsIds(newUniqueItems);
     localStorage.setItem('basketItems', JSON.stringify(updatedBasketItemsIds));
-    console.log(basketItemsIds);
   }
 
   return (

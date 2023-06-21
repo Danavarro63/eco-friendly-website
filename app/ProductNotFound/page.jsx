@@ -7,11 +7,11 @@ import Error from "/public/error_404.jpeg";
 function Page() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar basketItemsIds={basketItemsIds} setBasketItemsIds={setBasketItemsIds}/>
       <ExtraDropdowns />
       <div className='flex flex-col items-center justify-center'>
         <Image src={Error} width={500} height={500} />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,9 +1,7 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState,useId } from 'react';
 import Freeshipping from './freeshipping';
-import { BiSearchAlt2 } from 'react-icons/bi';
 import { BsBag } from 'react-icons/bs';
-import { RxHamburgerMenu } from 'react-icons/rx';
 import { RiMenu4Line, RiCloseLine } from 'react-icons/ri';
 import products from "app/Product/[ProductId]/records.json";
 import Link from 'next/link';
@@ -25,6 +23,12 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
   const [basketOpen, setIsBasketOpen] = useState(false);
 
   const toggleBasket = () => {
+    if(basketItemsIds == null){
+      return;
+    }
+    if(basketItemsIds.length < 1 && basketOpen==false){
+      return;
+    }
     setIsBasketOpen(!basketOpen);
   };
 
@@ -58,7 +62,6 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
     }
     for (let i = 0; i < basketItemsIds.length; i++) {
       total = total + Products[basketItemsIds[i]].price;
-      console.log(Products[basketItemsIds[i]].price);
     }
     return total.toFixed(2);
   }
@@ -66,7 +69,7 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
   return (
     <>
       <Freeshipping />
-      <div className='h-24 items-center justify-between flex'>
+      <div className='h-24 items-center justify-between flex mx-4'>
       <div> 
         <Link href="/">
           <Image className='cursor-pointer' src={Logo} alt={"logo"} width={100} height={100} />
@@ -77,13 +80,17 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
               <Select
                 options={options}
                 value={searchQuery}
-                onChange={(selectedOption) => setSearchQuery(selectedOption)}
+                onChange={(selectedOption) => {
+                  setSearchQuery(selectedOption);
+                  handleSearch();
+                }}
                 onKeyDown={handleKeyDown}
                 placeholder="Search"
                 isClearable
                 isSearchable
                 className="w-full rounded-lg focus:outline-none outline-none text-sm"
                 classNamePrefix="react-select"
+                instanceId={useId()}
                 styles={{
                   dropdownIndicator: (provided) => ({
                     ...provided,
@@ -107,7 +114,15 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
             Checkout
           </Link>
         </div>
-        <BsBag size={40} className="md:hidden cursor-pointer" onClick={toggleBasket} />
+        <div className="relative mr-4 md:hidden ">
+  <BsBag size={40} className="md:hidden cursor-pointer" onClick={toggleBasket} />
+  {
+    basketItemsIds.length > 0 && 
+  <p className="md:hidden flex bg-red-500 text-white rounded-full w-5 h-5 items-center justify-center absolute -top-2 -left-2 text-xs">
+    {basketItemsIds.length}
+  </p>
+  }
+</div>
       </div>
 
       {basketOpen &&

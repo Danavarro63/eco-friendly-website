@@ -71,11 +71,12 @@ function AddButton({ label, id,addToBasket }) {
   );
 }
 
-function ProductImageSmall({ src, title, id,addToBasket}) {
+function ProductImageSmall({ src, title, id, addToBasket }) {
   return (
     <div className="relative">
       <Image
-        width={1500} height={1500}
+        width={1500}
+        height={1500}
         className="block border-black/7 border-2"
         src={src}
         title="Project"
@@ -83,21 +84,29 @@ function ProductImageSmall({ src, title, id,addToBasket}) {
         style={{
           width: '100%',
           height: '100%',
-          position: 'relative'
-        }} />
-      <div
-        className="flex flex-col gap-4 h-full w-full border-black border-2 justify-between items-center absolute top-0 left-0  bg-gradient-to-r from-gray-500/60 to-gray-500/60 opacity-0 text-white hover:opacity-100 transition ease-in-out duration-500 hover:cursor-pointer">
-        <h1 className='z-0 text-white left-0 sm:text-md md:text-xl lg:text-2xl font-light pt-10'>{title}</h1>
-        <div className='gap-4 left-10 pb-20'>
-          <div className="flex gap-4">
-            <AddButtonSmall addToBasket={addToBasket} id={id-1} width={1500} height={1500} label="Add to 🛒" /> <ButtonSmall label="See More" id={id}/>
+          position: 'relative',
+        }}
+      />
+      <div className="flex flex-col gap-4 h-full w-full border-black border-2 justify-between items-center absolute top-0 left-0 bg-gradient-to-r from-gray-500/60 to-gray-500/60 opacity-0 text-white hover:opacity-100 transition ease-in-out duration-500 hover:cursor-pointer">
+        <h1 className="z-0 text-white left-0 sm:text-md md:text-xl lg:text-2xl font-light lg:pt-10">
+          {title}
+        </h1>
+        <div className="gap-4 left-10 pb-20">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
+            <AddButtonSmall
+              addToBasket={addToBasket}
+              id={id - 1}
+              width={1500}
+              height={1500}
+              label="Add to 🛒"
+            />
+            <ButtonSmall label="See More" id={id} />
           </div>
         </div>
       </div>
     </div>
   );
 }
-
 function ButtonSmall({ url, label, id }) {
   return (
     <Link

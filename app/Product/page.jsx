@@ -1,14 +1,27 @@
+"use client"
 import Navbar from '../components/navbar';
+import React,{useState,useEffect} from 'react';
 import ExtraDropdowns from '../components/extraDropdowns';
 import Image from 'next/image';
 import WoodenSpoon from '/public/WoodenSpoon.jpg';
 
 export default function Home() {
+  const [basketItemsIds, setBasketItemsIds] = useState([]);
+  const [uniqueBasketItemsIds, setUniqueBasketItemsIds] = useState([]);
 
+  useEffect(() => {
+    const storedBasketItems = JSON.parse(localStorage.getItem('basketItems'));
+    if (storedBasketItems) {
+      setBasketItemsIds(storedBasketItems);
+      setUniqueBasketItemsIds([...new Set(storedBasketItems)]);
+    }
+  }, []);
+    
 return (
 
+    
     <>
-      <Navbar />
+      <Navbar basketItemsIds={basketItemsIds} setBasketItemsIds={setBasketItemsIds} />
       <ExtraDropdowns />
       <div >
         <div className="grid md:grid-cols-2  grid-cols-1 pt-12 px-4">
