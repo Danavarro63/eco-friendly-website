@@ -115,11 +115,11 @@ function Navbar({ basketItemsIds, setBasketItemsIds }) {
         </div>
         <div className="relative mr-4 md:hidden ">
           <BsBag size={40} className="md:hidden cursor-pointer" onClick={toggleBasket} />
-          {basketItemsIds.length > 0 &&
+          {/* {basketItemsIds.length > 0 &&
             <p className="md:hidden flex bg-red-500 text-white rounded-full w-5 h-5 items-center justify-center absolute -top-2 -left-2 text-xs">
               {basketItemsIds.length}
             </p>
-          }
+          }  */}
         </div>
       </div>
 
