@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useId } from 'react';
 import Freeshipping from './freeshipping';
 import { BsBag } from 'react-icons/bs';
